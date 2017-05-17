@@ -2,6 +2,6 @@
 #define CONFIG_H_
 
 
-#define VERSION    "v0.1A\n"
+#define VERSION    "v0.1A"
 
 #endif /* CONFIG_H_ */
