@@ -3,11 +3,13 @@
 #include "config.h"
 #include "usart.h"
 
+// Envoi un caratere sur USARTx
 void Send_Char(char data, uint8_t numusart)
 {
   USART_Transmit(data, numusart);
 }
 
+// Envoi une chaine de caratere sur USARTx
 void Send_String(char *string, uint8_t numusart)
 {
   uint8_t ind = 0;
@@ -18,6 +20,7 @@ void Send_String(char *string, uint8_t numusart)
   } 
 }
 
+// Init USARTx
 void USART_Init(uint16_t ubrr, uint8_t u2x, uint8_t numusart)
 {
   if(numusart == 0)
@@ -117,6 +120,7 @@ void USART_Init(uint16_t ubrr, uint8_t u2x, uint8_t numusart)
    }
 }
 
+// 
 void USART_Transmit(unsigned char data, uint8_t numusart)
 {
   switch(numusart)
@@ -137,10 +141,10 @@ void USART_Transmit(unsigned char data, uint8_t numusart)
         while (!(UCSR3A & (1<<UDRE3)));  
         UDR2 = data;
         break;        
-  }
-  
+  }  
 }
 
+// Recoi un caractere sur USARTx
 unsigned char USART_Receive(uint8_t numusart)
 {
   if(numusart == 0)
@@ -185,8 +189,7 @@ void USART_Flush(uint8_t numusart)
     case 3:
         while (UCSR3A & (1<<RXC3)) dummy = UDR3;
         break;        
-  }
-  
+  }  
 }
 
 

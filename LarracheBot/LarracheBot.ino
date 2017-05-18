@@ -3,6 +3,7 @@
 #include <util/delay.h>
 
 #include "config.h"
+#include "moteurs.h"
 #include "usart.h"
 
 #define PLED  PORTB
@@ -14,7 +15,10 @@ int main(void)
 
   // Initialisation USART0: 9600 8N1
   USART_Init(207, 1, 0);
-  Send_String("LarracheBOT " VERSION "\n", 0);
+  Send_String("LarracheBOT..." VERSION "\n", 0);
+
+  MOTEURS_Init();
+  Send_String("Moteurs.......OK", 0);
 
   sei();
   
